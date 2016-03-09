@@ -2,8 +2,11 @@ function Medida(valor,tipo)
 {
     this.valor = valor;
     this.tipo = tipo;
-    this.measures = {};
 }
+Medida.measures = {};
+Medida.measures.c = "Celsius"
+Medida.measures.f = "Fahrenheit"
+Medida.measures.k = "Kelvin"
 
 Medida.match = function(valor) {
   xregexp = XRegExp('(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?([ ]*)) #val \n' +
@@ -18,9 +21,9 @@ Medida.convertir = function(valor) {
   var measures = Medida.measures;
   var match = Medida.match(valor);
   if (match) {
-    var numero = match.numero,
+    var numero = match.val,
         tipo   = match.tipo,
-        destino = match.destino;
+        destino = match.opt;
     try {
       var source = new measures[tipo](numero);  // new Fahrenheit(32)
       var target = "to"+measures[destino].name; // "toCelsius"
