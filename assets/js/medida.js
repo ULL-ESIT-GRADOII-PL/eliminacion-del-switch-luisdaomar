@@ -5,6 +5,15 @@ function Medida(valor,tipo)
     this.measures = {};
 }
 
+Medida.match = function(valor) {
+  xregexp = XRegExp('(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?([ ]*)) #val \n' +
+                    '(?<tipo> [cfkCFK]([ ]*)) #tipo \n' +
+                    '(?<to> (to)([ ]+))? #to \n' +
+                    '(?<opt>  [cfkCFK]([ ]*)) #opt','x');
+  valor = XRegExp.exec(valor,xregexp);
+  return valor;
+}
+
 Medida.convertir = function(valor) {
   var measures = Medida.measures;
   var match = Medida.match(valor);
