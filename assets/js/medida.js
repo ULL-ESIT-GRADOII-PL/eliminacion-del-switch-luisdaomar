@@ -1,12 +1,16 @@
+function Medida(valor,tipo)
+{
+    this.valor = valor;
+    this.tipo = tipo;
+}
+
 Medida.convertir = function(valor) {
   var measures = Medida.measures;
-
   var match = Medida.match(valor);
   if (match) {
     var numero = match.numero,
         tipo   = match.tipo,
         destino = match.destino;
-
     try {
       var source = new measures[tipo](numero);  // new Fahrenheit(32)
       var target = "to"+measures[destino].name; // "toCelsius"
