@@ -2,6 +2,7 @@ function Medida(valor,tipo)
 {
     this.valor = valor;
     this.tipo = tipo;
+    this.measures = {};
 }
 
 Medida.convertir = function(valor) {
@@ -17,7 +18,7 @@ Medida.convertir = function(valor) {
       return source[target]().toFixed(2) + " "+target; // "0 Celsius"
     }
     catch(err) {
-      return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
+      return 'Desconozco como convertir desde "' + tipo + '" hasta "' + destino + '"';
     }
   }
   else

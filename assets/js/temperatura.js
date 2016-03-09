@@ -12,6 +12,7 @@ Celsius.prototype.constructor = Celsius;
 function Celsius(valor)
 {
   Temperatura.call(this,valor);
+  this.measures.c = Celsius;
 }
 
 Celsius.prototype.toFarenheit = function () {
@@ -28,6 +29,7 @@ Farenheit.prototype.constructor = Farenheit;
 function Farenheit(valor)
 {
   Temperatura.call(this,valor);
+  this.measures.f = Farenheit;
 }
 
 Farenheit.prototype.toCelsius = function () {
@@ -45,6 +47,7 @@ Kelvin.prototype.constructor = Kelvin;
 function Kelvin(valor)
 {
   Temperatura.call(this,valor);
+  this.measures.k = Kelvin;
 }
 
 Kelvin.prototype.toFarenheit = function () {
