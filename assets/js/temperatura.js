@@ -11,15 +11,17 @@ Celsius.prototype.constructor = Celsius;
 
 function Celsius(valor)
 {
+  console.log("hola bb");
   Temperatura.call(this,valor);
 }
 
 Celsius.prototype.toFarenheit = function () {
+  console.log("hola bebito");
   return (((this.valor*9)/5)+32);
 }
 
 Celsius.prototype.toKelvin = function () {
-  return this.valor+273.15;
+  return parseFloat(this.valor)+273.15;
 }
 
 Farenheit.prototype = new Temperatura ();

@@ -5,10 +5,13 @@ function Medida(valor,tipo)
 }
 
 Medida.match = function(valor) {
-  xregexp = XRegExp('(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?([ ]*)) #val \n' +
-                    '(?<tipo> [cfkCFK]([ ]*)) #tipo \n' +
-                    '(?<to> (to)([ ]+))? #to \n' +
-                    '(?<opt>  [cfkCFK]([ ]*)) #opt','x');
+  xregexp = XRegExp('(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?) #val \n' +
+                    '(\\s*) \n' +
+                    '(?<tipo> [cfkCFK]) #tipo \n' +
+                    '(\\s*) \n' +
+                    '(?<to> (to)?) #to \n' +
+                    '(\\s*) \n' +
+                    '(?<opt>  [cfkCFK]) #opt','x');
   valor = XRegExp.exec(valor,xregexp);
   return valor;
 }
@@ -22,14 +25,18 @@ Medida.convertir = function(valor) {
   measures.k = Kelvin;
   var match = Medida.match(valor);
   if (match) {
-    var numero = match.val,
-        tipo   = match.tipo,
+    var numero = match.val;
+        tipo   = match.tipo;
         destino = match.opt;
     try {
-      console.log(measures[tipo]);
-      var source = new measures[tipo](numero);  // new Fahrenheit(32)
+      console.log(measures['c']);
+      console.log(measures['f']);
+      console.log(measures['k']);
+      console.log(measures[tipo] + "(" + numero + ")");
+      var source = new measures[tipo](numero);
+      console.log(source); // new Fahrenheit(32)
       var target = "to"+measures[destino].name; // "toCelsius"
-      return source[target]().toFixed(2) + " "+target; // "0 Celsius"
+      return source[target]().toFixed(2) + " "+measures[destino].name; // "0 Celsius"
     }
     catch(err) {
       console.log(err);
