@@ -7,11 +7,11 @@ function Medida(valor,tipo)
 Medida.match = function(valor) {
   xregexp = XRegExp('(?<val> [-+]?[0-9]+(\\.[0-9]+)?(?:e[+-]?[0-9]+)?) #val \n' +
                     '(\\s*) \n' +
-                    '(?<tipo> [cfkCFK]) #tipo \n' +
+                    '(?<tipo> [a-z]) #tipo \n' +
                     '(\\s*) \n' +
                     '(?<to> (to)?) #to \n' +
                     '(\\s*) \n' +
-                    '(?<opt>  [cfkCFK]) #opt','x');
+                    '(?<opt>  [a-z]) #opt','x');
   valor = XRegExp.exec(valor,xregexp);
   return valor;
 }
