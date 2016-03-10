@@ -4,7 +4,7 @@ Este repositori aloja la practica de de eleminacion del switch smell del convers
 
 **Página de la práctica**
 
-* Web de la practica <>
+* Web de la practica <http://ull-esit-gradoii-pl.github.io/eliminacion-del-switch-luisdaomar/>
 
 **Página de los autores**
 
